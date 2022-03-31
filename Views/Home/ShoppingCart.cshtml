@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{double Subtotal = 0;}
+            @{
+                foreach(ShoppingCart p in @ViewBag.ShoppingCart.UserCart)
+                {
+                    double price = p.CartItem.Quantity * p.CartItem.Price;
+                    Subtotal = Subtotal + p.CartItem.Price;
+                    <tr>
+                        <th scope="row">@p.CartItem.Artist - @p.CartItem.Title <a href="/RemoveFromCart/@p.ShoppingCartId">(Remove)</a></th>
+                        <td>$@p.CartItem.Price</td>
+                        <td>@p.CartItem.Quantity</td>
+                        <td>$@price</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <p>Subtotal = $@Subtotal</p>
+    <form action="/PlaceOrder" method="post">
+        <input name="UserId" type="hidden" value="@ViewBag.LoggedInUser.UserId">
+        <input name="TotalCost" type="hidden" value="@Subtotal">
+        <input name="Products" type="hidden" value="@ViewBag.ShoppingCart.UserCart">
+        <input type="submit" value="Place Order">
+    </form>
+    @* <a href="/PlaceOrder/@ViewBag.LoggedInUser.UserId"></a> *@
+
+</div>

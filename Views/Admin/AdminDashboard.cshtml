@@ -1,0 +1,47 @@
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row d-flex justify-content-between">
+    <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+    </form>
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary">Dropdown</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#!">Action</a>
+            <a class="dropdown-item" href="#!">Another action</a>
+        </div>
+    </div>
+</div>
+    <table class="table m-5">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Date Ordered</th>
+                @* <th>Billing Address</th> *@
+                <th>Total</th>
+                @* <th>Status</th> *@
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(Order o in ViewBag.AllOrders)
+                {
+                    <tr class="table-info">
+                        <th scope="row"><a href="/OrderInfo/@o.OrderId">@o.OrderId</a></th>
+                        <td>@o.OrderedBy.Name</td>
+                        <td>@o.CreatedAt</td>
+                        <td>$@o.TotalCost</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>

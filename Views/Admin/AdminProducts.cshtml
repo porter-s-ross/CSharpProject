@@ -1,0 +1,45 @@
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row d-flex justify-content-between m-5">
+    <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+    </form>
+    <div class="btn-group">
+        <a href="/NewProduct" class="btn btn-success">Add New Product</a>
+    </div>
+</div>
+    <table class="table m-5">
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Artist</th>
+                <th>Title</th>
+                <th>Inventory Count</th>
+                <th>Quantity Sold</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(Product p in @ViewBag.AllProducts)
+                {
+                    <tr class="table-secondary">
+                        <th scope="row"><img width="50px" src="@p.ImageUrl" alt="@p.Artist-@p.Title"></th>
+                        <td>@p.ProductId</td>
+                        <td>@p.MediaType.Name</td>
+                        <td>@p.Artist</td>
+                        <td>@p.Title</td>
+                        <td>@p.Quantity</td>
+                        <td>0</td>
+                        <td>Action</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,32 @@
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table m-5">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(Product o in ViewBag.OrderInfo.Products)
+                {
+                    double Total = o.Quantity * o.Price;
+                    <tr class="table-info">
+                        <th scope="row">@o.ProductId</th>
+                        <td>@o.Artist - @o.Title</td>
+                        <td>$@o.Price</td>
+                        <td>@o.Quantity</td>
+                        <td>$@Total</td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <p>Subtotal = $@ViewBag.OrderInfo.TotalCost</p>
+    </table>

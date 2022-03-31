@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <img src="@ViewBag.ProductInfo.ImageUrl" alt="Album art for @ViewBag.ProductInfo.Artist - @ViewBag.ProductInfo.Title">
+        </div>
+        <div class="col">
+            <h1>@ViewBag.ProductInfo.Artist - @ViewBag.ProductInfo.Title</h1>
+            <h3>@ViewBag.ProductInfo.Label</h3>
+            <h4>$@ViewBag.ProductInfo.Price</h4>
+            <p>In Stock: @ViewBag.ProductInfo.Quantity</p>
+            <a href="/AddToCart/@ViewBag.ProductInfo.ProductId" class="btn btn-primary">Add To Cart</a>
+
+            <p>Label: @ViewBag.ProductInfo.Label - @ViewBag.ProductInfo.CatalogNumber</p>
+            <p>Released: </p>
+            <p>Genre: @ViewBag.ProductInfo.Genre</p>
+            <p>Style: @ViewBag.ProductInfo.Style</p>
+            <p>Format: @ViewBag.ProductInfo.Format</p>
+            <p>Description: @ViewBag.ProductInfo.Description</p>
+        </div>
+    </div>
