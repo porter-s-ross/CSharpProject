@@ -13,7 +13,7 @@
     </div>
 </div>
     <table class="table m-5">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>Picture</th>
                 <th>ID</th>
@@ -29,7 +29,7 @@
             @{
                 foreach(Product p in @ViewBag.AllProducts)
                 {
-                    <tr class="table-secondary">
+                    <tr class="table-light">
                         <th scope="row"><img width="50px" src="@p.ImageUrl" alt="@p.Artist-@p.Title"></th>
                         <td>@p.ProductId</td>
                         <td>@p.MediaType.Name</td>

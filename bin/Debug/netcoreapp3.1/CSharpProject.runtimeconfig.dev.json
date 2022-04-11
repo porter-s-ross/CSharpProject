@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/avbreath/.dotnet/store/|arch|/|tfm|",
-      "/Users/avbreath/.nuget/packages"
+      "/Users/o2.os/.dotnet/store/|arch|/|tfm|",
+      "/Users/o2.os/.nuget/packages"
     ]
   }
 }
