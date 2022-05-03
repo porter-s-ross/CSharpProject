@@ -15,10 +15,12 @@
                 <div class="card-group m-2">
                     <div class="card d-flex justify-content-center" style="width: 400px; border: none">
                         <div class="card-body mx-auto d-flex flex-column align-items-center">
-                            <img height="300px" width="300px class="card-img-top" src="@p.ImageUrl" alt="@p.Artist-@p.Title">
-                            <h4 class="card-title"><a href="/@p.ProductId/info">@p.Artist - @p.Title </a> </h4>
-                            <p class="card-text">@p.Label</p>
-                            <p class="card-text">$@p.Price</p>
+                            <img height="300px" width="300px" src="@p.ImageUrl" alt="@p.Artist-@p.Title">
+                            <div>
+                                <h4 class="card-title"><a href="/@p.ProductId/info">@p.Artist - @p.Title </a> </h4>
+                                <p class="card-text">@p.Label</p>
+                                <p class="card-text">$@p.Price</p>
+                            </div>
                         </div>
                     </div>
                 </div>
