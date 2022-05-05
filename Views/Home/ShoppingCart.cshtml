@@ -2,7 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
+<div class="m-10">
+    <a class="btn btn-primary mt-3 mb-3" href="/Dashboard">All Products</a>
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -20,7 +21,7 @@
                     double price = p.CartItem.Quantity * p.CartItem.Price;
                     Subtotal = Subtotal + p.CartItem.Price;
                     <tr>
-                        <th scope="row">@p.CartItem.Artist - @p.CartItem.Title <a href="/RemoveFromCart/@p.ShoppingCartId">(Remove)</a></th>
+                        <th scope="row">@p.CartItem.Artist - @p.CartItem.Title <a href="/RemoveFromCart/@p.ShoppingCartId" class="text-danger">(Remove)</a></th>
                         <td>$@p.CartItem.Price</td>
                         <td>@p.CartItem.Quantity</td>
                         <td>$@price</td>
@@ -29,12 +30,12 @@
             }
         </tbody>
     </table>
-    <p>Subtotal = $@Subtotal</p>
+    <p style="font-size: 25px;">Subtotal = $@Subtotal</p>
     <form action="/PlaceOrder" method="post">
         <input name="UserId" type="hidden" value="@ViewBag.LoggedInUser.UserId">
         <input name="TotalCost" type="hidden" value="@Subtotal">
         <input name="Products" type="hidden" value="@ViewBag.ShoppingCart.UserCart">
-        <input type="submit" value="Place Order">
+        <input class="btn btn-success" type="submit" value="Place Order">
     </form>
     @* <a href="/PlaceOrder/@ViewBag.LoggedInUser.UserId"></a> *@
 
