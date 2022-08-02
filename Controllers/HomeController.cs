@@ -29,6 +29,7 @@ namespace CSharpProject.Controllers
         {
             // HttpContext.Session.Clear();
             ViewBag.AllProducts = _context.Products.ToList();
+            ViewBag.LoggedIn = false;
             return View();
         }
 
@@ -52,6 +53,7 @@ namespace CSharpProject.Controllers
             }
             else
             {
+                ViewBag.LoggedIn = false;
                 return View("Index");
             }
         }
@@ -80,6 +82,7 @@ namespace CSharpProject.Controllers
             else
             {
                 ViewBag.LoggedInUser = _context.Users.FirstOrDefault(d => d.UserId == HttpContext.Session.GetInt32("UserId"));
+                ViewBag.LoggedIn = false;
                 return View("Index");
             }
         }

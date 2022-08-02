@@ -1393,19 +1393,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/avbreath/.nuget/packages/": {}
+    "/Users/o2.os/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/avbreath/Dropbox/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/CSharpProject.csproj",
+      "projectUniqueName": "/Users/o2.os/Dropbox/Dev/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/CSharpProject.csproj",
       "projectName": "CSharpProject",
-      "projectPath": "/Users/avbreath/Dropbox/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/CSharpProject.csproj",
-      "packagesPath": "/Users/avbreath/.nuget/packages/",
-      "outputPath": "/Users/avbreath/Dropbox/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/obj/",
+      "projectPath": "/Users/o2.os/Dropbox/Dev/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/CSharpProject.csproj",
+      "packagesPath": "/Users/o2.os/.nuget/packages/",
+      "outputPath": "/Users/o2.os/Dropbox/Dev/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/avbreath/.nuget/NuGet/NuGet.Config"
+        "/Users/o2.os/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
