@@ -7,13 +7,14 @@
         <div class="col">
             <img src="@ViewBag.ProductInfo.ImageUrl" alt="Album art for @ViewBag.ProductInfo.Artist - @ViewBag.ProductInfo.Title">
         </div>
-        <div class="col">
-            <h1>@ViewBag.ProductInfo.Artist - @ViewBag.ProductInfo.Title</h1>
-            <h3>@ViewBag.ProductInfo.Label</h3>
-            <h4>$@ViewBag.ProductInfo.Price</h4>
-            <p>In Stock: @ViewBag.ProductInfo.Quantity</p>
-            <a href="/AddToCart/@ViewBag.ProductInfo.ProductId" class="btn btn-primary">Add To Cart</a>
-
+        <div class="col ProductInfoText">
+            <div style="border: 1px black solid;border-radius: 5px;padding: 25px; margin-bottom: 50px">
+                <h1 style="font-style: italic; font-weight: bold">@ViewBag.ProductInfo.Artist - @ViewBag.ProductInfo.Title</h1>
+                <h3>@ViewBag.ProductInfo.Label</h3>
+                <h4>$@ViewBag.ProductInfo.Price</h4>
+                <p>In Stock: @ViewBag.ProductInfo.Quantity</p>
+                <a href="/AddToCart/@ViewBag.ProductInfo.ProductId" class="btn btn-primary">Add To Cart</a>
+            </div>
             <p>Label: @ViewBag.ProductInfo.Label - @ViewBag.ProductInfo.CatalogNumber</p>
             <p>Released: </p>
             <p>Genre: @ViewBag.ProductInfo.Genre</p>

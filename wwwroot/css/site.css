@@ -1,6 +1,38 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+
+/* Custom CSS
+-------------------------------------------------- */
+
+*{
+  font-family: 'Noto Sans', sans-serif;
+  color:#000000;
+}
+
+h1{
+  font-size: 40px;
+}
+
+h2{
+  font-size: 30px;
+}
+
+
+
+
+
+.ProductInfoText{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+
+
+
+/* ----------------------- */
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -9,7 +41,7 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: #000000;
 }
 
 .btn-primary {
@@ -69,3 +101,6 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+
