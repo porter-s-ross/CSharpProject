@@ -34,9 +34,6 @@ namespace CSharpProject.Controllers
             return View();
         }
 
-
-
-
         [HttpPost("AdminLogin")]
         public IActionResult AdminLogin(Admin admin)
         {
@@ -66,18 +63,12 @@ namespace CSharpProject.Controllers
 
 
 
-
-
-
-
-
         [HttpGet("Admin/Dashboard")]
         public IActionResult AdminDashboard()
         {
             ViewBag.AllOrders = _context.Orders.Include(i=>i.OrderedBy).ToList();
             return View();
         }
-
 
         [HttpGet("OrderInfo/{oId}")]
         public IActionResult OrderInfo(int oId)
@@ -86,11 +77,6 @@ namespace CSharpProject.Controllers
             .FirstOrDefault(i=>i.OrderId == oId);
             return View();
         }
-
-
-
-
-
 
         [HttpGet("Admin/Products")]
         public IActionResult AdminProducts()
