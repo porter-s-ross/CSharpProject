@@ -101,18 +101,6 @@ namespace CSharpProject.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         [HttpGet("{pId}/info")]
         public IActionResult ProductInfo(int pId)
         {
@@ -170,7 +158,6 @@ namespace CSharpProject.Controllers
 
             int LoggedInUserId = (int)HttpContext.Session.GetInt32("UserId");
 
-
             // Order NewOrder = new Order();
             User OrderedCart = _context.Users.Include(w => w.UserCart)
             .ThenInclude(w => w.CartItem)
@@ -205,29 +192,12 @@ namespace CSharpProject.Controllers
             return View();
         }
 
-
-
-
-
-
-
-
-
-
-
-
         [HttpGet("Logout")]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
