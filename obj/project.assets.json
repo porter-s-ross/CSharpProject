@@ -1398,11 +1398,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/o2.os/Dropbox/Dev/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/CSharpProject.csproj",
+      "projectUniqueName": "/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/CSharpProject.csproj",
       "projectName": "CSharpProject",
-      "projectPath": "/Users/o2.os/Dropbox/Dev/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/CSharpProject.csproj",
+      "projectPath": "/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/CSharpProject.csproj",
       "packagesPath": "/Users/o2.os/.nuget/packages/",
-      "outputPath": "/Users/o2.os/Dropbox/Dev/Coding_Dojo/dojo_assignments/csharp/Project/CSharpProject/obj/",
+      "outputPath": "/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/o2.os/.nuget/NuGet/NuGet.Config"
