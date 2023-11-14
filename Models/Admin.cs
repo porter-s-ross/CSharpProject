@@ -24,15 +24,9 @@ namespace CSharpProject.Models
         public string Password {get;set;}
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;
-
+        
         // set up one to many
-
         public List<Product> Inventory {get;set;}
-
-
         // set up many to many
-
-
-
     }
 }
