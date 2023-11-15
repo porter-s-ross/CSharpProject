@@ -228,3 +228,5 @@
 /Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/obj/Debug/netcoreapp3.1/staticwebassets/CSharpProject.StaticWebAssets.xml
 /Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/obj/Debug/netcoreapp3.1/CSharpProject.genruntimeconfig.cache
 /Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/obj/Debug/netcoreapp3.1/Razor/Views/Admin/AdminInvite.cshtml.g.cs
+/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/obj/Debug/netcoreapp3.1/Razor/Views/Admin/AdminRegistration.cshtml.g.cs
+/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/bin/Debug/netcoreapp3.1/BCrypt.Net-Next.dll

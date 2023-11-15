@@ -8,25 +8,30 @@ namespace CSharpProject.Models
     public class Admin
     {
         [Key]
-        public int AdminId {get;set;}
+        public int AdminId { get; set; }
 
         [Required]
-        public string FirstName {get;set;}
+        public string FirstName { get; set; }
         [Required]
-        public string LastName {get;set;}
+        public string LastName { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email {get;set;}
-        
+        public string Email { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
-        public string Password {get;set;}
-        public DateTime CreatedAt {get;set;} = DateTime.Now;
-        public DateTime UpdatedAt {get;set;} = DateTime.Now;
+        public string Password { get; set; }
+
+        [NotMapped] // This attribute is used to indicate that this property is not mapped to the database.
+        [Compare("Password", ErrorMessage = "Password and confirmation do not match.")]
+        public string PassConfirm { get; set; }
         
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
         // set up one to many
-        public List<Product> Inventory {get;set;}
+        public List<Product> Inventory { get; set; }
         // set up many to many
     }
 }
