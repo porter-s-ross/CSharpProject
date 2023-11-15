@@ -42,14 +42,24 @@ namespace CSharpProject.Controllers
         [HttpPost("SendInvitation")]
         public async Task<IActionResult> SendInvitation(string adminEmail)
         {
-            // create a string variable invitationToken, set it to the result of calling GenerateUniqueToken() method of TokenGenerator Class
             string invitationToken = TokenGenerator.GenerateUniqueToken();
-            // Call upon SaveTokenInDatabase method from TokenStorage Class, and pass in the email that invite is being sent to, and the invitationToken
-            TokenStorage.SaveTokenInDatabase(adminEmail, invitationToken);
-            // asychronous function to call SendInvitationEmail method from EmailService class, passing in adminEmail, and invitationToken
-            await EmailService.SendInvitationEmail(adminEmail, invitationToken);
-            // redirect to Invitation Sent
-            return RedirectToAction("InvitationSent");
+
+            // Create an instance of TokenStorage
+            var tokenStorage = new TokenStorage(_context);
+
+            // Call upon SaveTokenInDatabase method from the TokenStorage instance
+            tokenStorage.SaveTokenInDatabase(adminEmail, invitationToken);
+
+            bool isEmailSent = await EmailService.SendInvitationEmail(adminEmail, invitationToken);
+
+            if (isEmailSent)
+            {
+                return RedirectToAction("InvitationSent");
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         // TokenGenerator.cs
@@ -68,26 +78,66 @@ namespace CSharpProject.Controllers
                     .Select(s => s[random.Next(s.Length)])
                     // converts the sequence of characters into an array.
                     .ToArray());
-                    
+
                 return token;
             }
         }
 
         // TokenStorage.cs
-        public static class TokenStorage
+        public class TokenStorage
         {
-            public static void SaveTokenInDatabase(string adminEmail, string token)
+            private readonly MyContext _context;
+
+            public TokenStorage(MyContext context)
             {
-                // ... implementation of saving token in the database ...
+                _context = context;
+            }
+
+            public void SaveTokenInDatabase(string adminEmail, string token)
+            {
+                DateTime expirationDate = DateTime.UtcNow.AddHours(24);
+
+                var tokenEntity = new Token
+                {
+                    TokenId = token,
+                    UserEmail = adminEmail,  // Change 'userEmail' to 'adminEmail'
+                    ExpirationDate = expirationDate
+                };
+
+                _context.Tokens.Add(tokenEntity);
+                _context.SaveChanges();
             }
         }
+
+
+        public class TokenValidator
+        {
+            private readonly MyContext _context;
+            public TokenValidator(MyContext context)
+            {
+                _context = context;
+            }
+            public bool IsTokenValid(string token)
+            {
+                var tokenEntity = _context.Tokens.FirstOrDefault(t => t.TokenId == token);
+
+                if (tokenEntity != null)
+                {
+                    return tokenEntity.ExpirationDate > DateTime.UtcNow;
+                }
+
+                return false;
+            }
+        }
+
 
         // EmailService.cs
         public static class EmailService
         {
-            public static Task SendInvitationEmail(string adminEmail, string token)
+            public static async Task<bool> SendInvitationEmail(string adminEmail, string token)
             {
                 // ... implementation of sending invitation email ...
+                return true;
             }
         }
 
@@ -95,6 +145,12 @@ namespace CSharpProject.Controllers
         public IActionResult InvitationSent()
         {
             // ... logic for the InvitationSent action
+            return View();
+        }
+
+        [HttpGet("Admin/Invite")]
+        public IActionResult AdminInvite()
+        {
             return View();
         }
 

@@ -3,14 +3,16 @@ using System;
 using CSharpProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSharpProject.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20231114231831_TokenAddMigration")]
+    partial class TokenAddMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,25 +199,6 @@ namespace CSharpProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ShoppingCarts");
-                });
-
-            modelBuilder.Entity("CSharpProject.Models.Token", b =>
-                {
-                    b.Property<string>("TokenId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("ExpirationDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("UserEmail")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("TokenId");
-
-                    b.ToTable("Tokens");
                 });
 
             modelBuilder.Entity("CSharpProject.Models.User", b =>
