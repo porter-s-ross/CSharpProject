@@ -9,11 +9,6 @@ using CSharpProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
-<<<<<<< HEAD
-using BCrypt.Net;
-using Microsoft.AspNetCore.Authorization;
-=======
->>>>>>> parent of adaba9f... added functionality to add Admin to DB
 
 
 namespace CSharpProject.Controllers
