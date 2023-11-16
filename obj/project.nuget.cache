@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "FwRx04i2imTY6J8A0/JqgEOg+fgFcLqp0wSJmE1l6mz0EBvLjpi5tGfzc3j7zPgCySwIvwhBIx+9Wujm5iyVMQ==",
+  "dgSpecHash": "A2EaXxOkbu2Hg5mP6R3B1oFhfavXy7bTJgBRvse0oGnWR/xlOg9E8/afQLDU+61ouzQHgaR+p19o0e+eNZgHWg==",
   "success": true,
   "projectFilePath": "/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/CSharpProject.csproj",
   "expectedPackageFiles": [
-    "/Users/o2.os/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

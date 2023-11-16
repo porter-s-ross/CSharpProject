@@ -9,15 +9,17 @@ using CSharpProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+<<<<<<< HEAD
 using BCrypt.Net;
 using Microsoft.AspNetCore.Authorization;
+=======
+>>>>>>> parent of adaba9f... added functionality to add Admin to DB
 
 
 namespace CSharpProject.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly AdminRepository _adminRepository;
         private MyContext _context;
         private readonly ILogger<HomeController> _logger;
 
@@ -25,7 +27,6 @@ namespace CSharpProject.Controllers
         {
             _logger = logger;
             _context = context;
-            _adminRepository = new AdminRepository(context);
         }
 
         //===========================================================================
@@ -157,65 +158,6 @@ namespace CSharpProject.Controllers
         {
             return View();
         }
-
-
-        [HttpGet("/Admin/Registration")]
-        public IActionResult AdminRegistration()
-        {
-            return View();
-        }
-
-
-
-        [HttpPost("Admin/Submit")]
-        public IActionResult Register(Admin admin)
-        {
-            if (ModelState.IsValid)
-            {
-                string hashedPassword = HashPassword(admin.Password);
-
-                _adminRepository.AddAdmin(new Admin
-                {
-                    FirstName = admin.FirstName,
-                    LastName = admin.LastName,
-                    Email = admin.Email,
-                    Password = hashedPassword
-                });
-
-                // Additional logic, redirect, etc.
-            }
-
-            // Handle invalid model state
-            return View("Admin");
-        }
-
-
-        private string HashPassword(string password)
-        {
-            // Use a secure hashing algorithm (e.g., BCrypt, Argon2) to hash the password
-            // Do not roll your own hashing algorithm; use a well-established library or function
-            // Example using BCrypt:
-            return BCrypt.Net.BCrypt.HashPassword(password);
-        }
-
-        public class AdminRepository
-        {
-            private readonly MyContext _context;
-
-            public AdminRepository(MyContext context)
-            {
-                _context = context;
-            }
-
-            public void AddAdmin(Admin admin)
-            {
-                _context.Admins.Add(admin);
-                _context.SaveChanges();
-            }
-
-            // Other repository methods...
-        }
-
 
 
         [HttpPost("AdminLogin")]
