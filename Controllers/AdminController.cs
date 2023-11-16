@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace CSharpProject.Controllers
@@ -218,34 +219,58 @@ namespace CSharpProject.Controllers
 
 
         [HttpPost("AdminLogin")]
-        public IActionResult AdminLogin(Admin admin)
+        public IActionResult AdminLogin(LogAdmin admin)
         {
+            _logger.LogInformation("Attempting to log in admin with email: {Email}", admin.Email);
+
             if (ModelState.IsValid)
             {
-                Admin AdminInDb = _context.Admins.FirstOrDefault(s => s.Email == admin.Email);
-                if (AdminInDb == null)
+                Admin adminInDb = _context.Admins.FirstOrDefault(s => s.Email == admin.Email);
+
+                if (adminInDb == null)
                 {
-                    ModelState.AddModelError("Email", "Invalid login attempt");
+                    ModelState.AddModelError("Email", "Invalid login attempt - Email not found");
+                    _logger.LogWarning("Invalid login attempt - Email not found: {Email}", admin.Email);
+                    LogModelStateErrors();
                     return View("Admin");
                 }
-                // PasswordHasher<LogUser> Hasher = new PasswordHasher<LogUser>();
-                // PasswordVerificationResult result = Hasher.VerifyHashedPassword(LogUser, UserInDb.Password, LogUser.LogPassword);
-                if (AdminInDb.Password != admin.Password)
+
+                // Use BCrypt.Verify to check the hashed password
+                if (!BCrypt.Net.BCrypt.Verify(admin.Password, adminInDb.Password))
                 {
-                    ModelState.AddModelError("Password", "Invalid login attempt");
+                    ModelState.AddModelError("Password", "Invalid login attempt - Incorrect password");
+                    _logger.LogWarning("Invalid login attempt - Incorrect password for: {Email}", admin.Email);
+                    LogModelStateErrors();
                     return View("Admin");
                 }
-                HttpContext.Session.SetInt32("AdminId", admin.AdminId);
-                return RedirectToAction("Admin/Dashboard");
+
+                // Redirect to the AdminDashboard
+                return RedirectToAction("AdminDashboard");
             }
             else
             {
+                _logger.LogWarning("Invalid ModelState during admin login");
+                LogModelStateErrors();
                 return View("Admin");
             }
         }
 
 
 
+
+        private void LogModelStateErrors()
+        {
+            foreach (var modelState in ModelState.Values)
+            {
+                foreach (var error in modelState.Errors)
+                {
+                    _logger.LogError("ModelState Error: {ErrorMessage}", error.ErrorMessage);
+                }
+            }
+        }
+
+
+        [Authorize(Roles = "Admin", Policy = "AdminPolicy")]
         [HttpGet("Admin/Dashboard")]
         public IActionResult AdminDashboard()
         {
@@ -253,6 +278,7 @@ namespace CSharpProject.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin", Policy = "AdminPolicy")]
         [HttpGet("OrderInfo/{oId}")]
         public IActionResult OrderInfo(int oId)
         {
@@ -261,6 +287,7 @@ namespace CSharpProject.Controllers
             return View();
         }
 
+        // [Authorize(Roles = "Admin", Policy = "AdminPolicy")]
         [HttpGet("Admin/Products")]
         public IActionResult AdminProducts()
         {
@@ -268,6 +295,7 @@ namespace CSharpProject.Controllers
             return View();
         }
 
+        // [Authorize(Roles = "Admin", Policy = "AdminPolicy")]
         [HttpGet("NewProduct")]
         public IActionResult NewProduct()
         {
@@ -275,6 +303,7 @@ namespace CSharpProject.Controllers
             return View();
         }
 
+        // [Authorize(Roles = "Admin", Policy = "AdminPolicy")]
         [HttpPost("AddProduct")]
         public IActionResult AddProduct(Product NewProduct)
         {
@@ -290,6 +319,7 @@ namespace CSharpProject.Controllers
             }
         }
 
+        // [Authorize(Roles = "Admin", Policy = "AdminPolicy")]
         [HttpPost("NewCategory")]
         public IActionResult NewCategory(Category NewCategory)
         {

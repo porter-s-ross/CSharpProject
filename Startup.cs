@@ -27,6 +27,22 @@ namespace CSharpProject
             services.AddDbContext<MyContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
             services.AddControllersWithViews();
             services.AddSession();
+            // Admin authentication scheme
+            services.AddAuthentication("AdminScheme")
+                .AddCookie("AdminScheme", options =>
+                {
+                    options.LoginPath = "/Admin"; // Update this with the path to your admin login page
+                        // Add other admin-specific configuration if needed
+                    options.AccessDeniedPath = "/Admin";
+                });
+
+
+            // Authorization policy for admin users
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminPolicy", policy =>
+                    policy.RequireRole("Admin"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +60,7 @@ namespace CSharpProject
             app.UseSession();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
