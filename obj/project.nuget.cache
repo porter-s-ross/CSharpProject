@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FwRx04i2imTY6J8A0/JqgEOg+fgFcLqp0wSJmE1l6mz0EBvLjpi5tGfzc3j7zPgCySwIvwhBIx+9Wujm5iyVMQ==",
+  "dgSpecHash": "DvkRUg+59zodK8UKhrMGhGpLLxfMQ5XVvcuTFeYcTUrG1hEEQ4P/56lM9aNkImFWQ6+S8fWfvkvl8oM8uPP11g==",
   "success": true,
   "projectFilePath": "/Users/o2.os/Dev/Projects/Coding_Dojo_Assignments/cSharp/Project/CSharpProject/CSharpProject.csproj",
   "expectedPackageFiles": [
@@ -22,7 +22,10 @@
     "/Users/o2.os/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/3.1.5/microsoft.extensions.dependencyinjection.abstractions.3.1.5.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.extensions.logging/3.1.5/microsoft.extensions.logging.3.1.5.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.extensions.logging.abstractions/3.1.5/microsoft.extensions.logging.abstractions.3.1.5.nupkg.sha512",
+    "/Users/o2.os/.nuget/packages/microsoft.extensions.logging.configuration/3.1.0/microsoft.extensions.logging.configuration.3.1.0.nupkg.sha512",
+    "/Users/o2.os/.nuget/packages/microsoft.extensions.logging.console/3.1.0/microsoft.extensions.logging.console.3.1.0.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.extensions.options/3.1.5/microsoft.extensions.options.3.1.5.nupkg.sha512",
+    "/Users/o2.os/.nuget/packages/microsoft.extensions.options.configurationextensions/3.1.0/microsoft.extensions.options.configurationextensions.3.1.0.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.extensions.primitives/3.1.5/microsoft.extensions.primitives.3.1.5.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "/Users/o2.os/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",

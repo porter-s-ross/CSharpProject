@@ -10,9 +10,8 @@
     <div class="col"></div>
     <div class="row m-5">
         <div class="col"></div>
-        <form asp-action="AdminLogin" asp-controller="Admin" method="post">
+        <form action="/AdminLogin" method="post">
             <div class="form-group col">
-                <input type="hidden" name="ReturnUrl" value="@Context.Request.Query["ReturnUrl"]">
                 <label for="Email">Email:</label>
                 <input asp-for="Email" class="form-control">
                 <span asp-validation-for="Email" class="text-danger"></span>

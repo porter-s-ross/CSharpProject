@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[3.1.5, )"
             },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[3.1.1, )"

@@ -34,6 +34,7 @@ namespace CSharpProject.Controllers
         [HttpGet("Admin")]
         public IActionResult Admin()
         {
+            ViewBag.AdminLoggedIn = false;
             return View();
         }
         //===============
@@ -218,25 +219,32 @@ namespace CSharpProject.Controllers
 
 
         [HttpPost("AdminLogin")]
-        public IActionResult AdminLogin(Admin admin)
+        public IActionResult AdminLogin(LogAdmin LogAdmin)
         {
             if (ModelState.IsValid)
             {
-                Admin AdminInDb = _context.Admins.FirstOrDefault(s => s.Email == admin.Email);
-                if (AdminInDb == null)
+                Admin adminInDb = _context.Admins.FirstOrDefault(s => s.Email == LogAdmin.Email);
+
+                if (adminInDb == null)
                 {
                     ModelState.AddModelError("Email", "Invalid login attempt");
+                    _logger.LogInformation("Invalid login attempt - Admin email not found.");
                     return View("Admin");
                 }
-                // PasswordHasher<LogUser> Hasher = new PasswordHasher<LogUser>();
-                // PasswordVerificationResult result = Hasher.VerifyHashedPassword(LogUser, UserInDb.Password, LogUser.LogPassword);
-                if (AdminInDb.Password != admin.Password)
+
+                // Use BCrypt.Verify to check the hashed password
+                if (!BCrypt.Net.BCrypt.Verify(LogAdmin.Password, adminInDb.Password))
                 {
                     ModelState.AddModelError("Password", "Invalid login attempt");
+                    _logger.LogInformation("Invalid login attempt - Incorrect password.");
                     return View("Admin");
                 }
-                HttpContext.Session.SetInt32("AdminId", admin.AdminId);
-                return RedirectToAction("Admin/Dashboard");
+
+                // If the password is correct, set session variable and redirect
+
+                _logger.LogInformation($"Admin logged in - AdminId: {adminInDb.AdminId}");
+                HttpContext.Session.SetInt32("AdminId", adminInDb.AdminId);
+                return RedirectToAction("AdminDashboard", "Admin");
             }
             else
             {
@@ -249,6 +257,16 @@ namespace CSharpProject.Controllers
         [HttpGet("Admin/Dashboard")]
         public IActionResult AdminDashboard()
         {
+            // Check if the AdminId session variable is set
+            if (HttpContext.Session.GetInt32("AdminId") == null)
+            {
+                // If not set, redirect to login or another appropriate action
+                _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+
+            // Continue with the dashboard logic...
+            _logger.LogInformation($"AdminDashboard accessed - AdminId: {HttpContext.Session.GetInt32("AdminId")}");
             ViewBag.AllOrders = _context.Orders.Include(i => i.OrderedBy).ToList();
             return View();
         }

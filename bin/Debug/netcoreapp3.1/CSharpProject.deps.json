@@ -26,6 +26,7 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "Microsoft.EntityFrameworkCore.Design": "3.1.5",
+          "Microsoft.Extensions.Logging.Console": "3.1.0",
           "Pomelo.EntityFrameworkCore.MySql": "3.1.1",
           "Stripe.net": "39.95.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -128,14 +129,14 @@
           "Microsoft.Extensions.Identity.Stores": "3.1.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "3.1.0.0",
           "Microsoft.Extensions.Localization": "3.1.0.0",
-          "Microsoft.Extensions.Logging.Configuration": "3.1.0.0",
-          "Microsoft.Extensions.Logging.Console": "3.1.0.0",
+          "Microsoft.Extensions.Logging.Configuration.Reference": "3.1.0.0",
+          "Microsoft.Extensions.Logging.Console.Reference": "3.1.0.0",
           "Microsoft.Extensions.Logging.Debug": "3.1.0.0",
           "Microsoft.Extensions.Logging.EventLog": "3.1.0.0",
           "Microsoft.Extensions.Logging.EventSource": "3.1.0.0",
           "Microsoft.Extensions.Logging.TraceSource": "3.1.0.0",
           "Microsoft.Extensions.ObjectPool": "3.1.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "3.1.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions.Reference": "3.1.0.0",
           "Microsoft.Extensions.Options.DataAnnotations": "3.1.0.0",
           "Microsoft.Extensions.WebEncoders": "3.1.0.0",
           "Microsoft.JSInterop": "3.1.0.0",
@@ -526,6 +527,19 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Logging.Configuration/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "3.1.5",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "3.1.0"
+        }
+      },
+      "Microsoft.Extensions.Logging.Console/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.5",
+          "Microsoft.Extensions.Logging": "3.1.5",
+          "Microsoft.Extensions.Logging.Configuration": "3.1.0"
+        }
+      },
       "Microsoft.Extensions.Options/3.1.5": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.5",
@@ -539,6 +553,14 @@
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.5",
+          "Microsoft.Extensions.Configuration.Binder": "3.1.5",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.5",
+          "Microsoft.Extensions.Options": "3.1.5"
         }
       },
       "Microsoft.Extensions.Primitives/3.1.5": {
@@ -1308,13 +1330,13 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Logging.Configuration/3.1.0.0": {
+      "Microsoft.Extensions.Logging.Configuration.Reference/3.1.0.0": {
         "compile": {
           "Microsoft.Extensions.Logging.Configuration.dll": {}
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Logging.Console/3.1.0.0": {
+      "Microsoft.Extensions.Logging.Console.Reference/3.1.0.0": {
         "compile": {
           "Microsoft.Extensions.Logging.Console.dll": {}
         },
@@ -1350,7 +1372,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0.0": {
+      "Microsoft.Extensions.Options.ConfigurationExtensions.Reference/3.1.0.0": {
         "compile": {
           "Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
         },
@@ -2456,12 +2478,33 @@
       "path": "microsoft.extensions.logging.abstractions/3.1.5",
       "hashPath": "microsoft.extensions.logging.abstractions.3.1.5.nupkg.sha512"
     },
+    "Microsoft.Extensions.Logging.Configuration/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yW3nIoNM3T5iZg8bRViiCN4+vIU/02l+mlWSvKqWnr0Fd5Uk1zKdT9jBWKEcJhRIWKVWWSpFWXnM5yWoIAy1Eg==",
+      "path": "microsoft.extensions.logging.configuration/3.1.0",
+      "hashPath": "microsoft.extensions.logging.configuration.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Console/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lkqVlnQqfqr8nmrpy7EnISXy192NEaIb0Xh4zaO8XS/QMiC3RqOAxxeq89JPSmjw+YfecwcikV8UB+NacdgRDg==",
+      "path": "microsoft.extensions.logging.console/3.1.0",
+      "hashPath": "microsoft.extensions.logging.console.3.1.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Options/3.1.5": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-f+JT/7lkKBMp/Ak2tVjO+TD7o+UoCfjnExkZNn0PZIso8kIXrqNy6x42Lrxf4Q0pW3JMf9ExmL2EQlvk2XnFAg==",
       "path": "microsoft.extensions.options/3.1.5",
       "hashPath": "microsoft.extensions.options.3.1.5.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tx6gMKE3rDspA1YZT8SlQJmyt1BaBSl6mNjB3g0ZO6m3NnoavCifXkGeBuDk9Ae4XjW8C+dty52p+0u38jPRIQ==",
+      "path": "microsoft.extensions.options.configurationextensions/3.1.0",
+      "hashPath": "microsoft.extensions.options.configurationextensions.3.1.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Primitives/3.1.5": {
       "type": "package",
@@ -3089,12 +3132,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Logging.Configuration/3.1.0.0": {
+    "Microsoft.Extensions.Logging.Configuration.Reference/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Logging.Console/3.1.0.0": {
+    "Microsoft.Extensions.Logging.Console.Reference/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -3124,7 +3167,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Options.ConfigurationExtensions/3.1.0.0": {
+    "Microsoft.Extensions.Options.ConfigurationExtensions.Reference/3.1.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
