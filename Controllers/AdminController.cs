@@ -216,8 +216,6 @@ namespace CSharpProject.Controllers
             // Other repository methods...
         }
 
-
-
         [HttpPost("AdminLogin")]
         public IActionResult AdminLogin(LogAdmin LogAdmin)
         {
@@ -274,6 +272,15 @@ namespace CSharpProject.Controllers
         [HttpGet("OrderInfo/{oId}")]
         public IActionResult OrderInfo(int oId)
         {
+
+            // Check if the AdminId session variable is set
+            if (HttpContext.Session.GetInt32("AdminId") == null)
+            {
+                // If not set, redirect to login or another appropriate action
+                _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+
             ViewBag.OrderInfo = _context.Orders.Include(w => w.Products)
             .FirstOrDefault(i => i.OrderId == oId);
             return View();
@@ -282,6 +289,15 @@ namespace CSharpProject.Controllers
         [HttpGet("Admin/Products")]
         public IActionResult AdminProducts()
         {
+
+            // Check if the AdminId session variable is set
+            if (HttpContext.Session.GetInt32("AdminId") == null)
+            {
+                // If not set, redirect to login or another appropriate action
+                _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+
             ViewBag.AllProducts = _context.Products.Include(a => a.MediaType).OrderByDescending(w => w.ProductId).ToList();
             return View();
         }
@@ -289,6 +305,13 @@ namespace CSharpProject.Controllers
         [HttpGet("NewProduct")]
         public IActionResult NewProduct()
         {
+            // Check if the AdminId session variable is set
+            if (HttpContext.Session.GetInt32("AdminId") == null)
+            {
+                // If not set, redirect to login or another appropriate action
+                _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
+                return RedirectToAction("AdminLogin", "Admin");
+            }
             ViewBag.AllCategories = _context.Categories.ToList();
             return View();
         }
