@@ -250,8 +250,6 @@ namespace CSharpProject.Controllers
             }
         }
 
-
-
         [HttpGet("Admin/Dashboard")]
         public IActionResult AdminDashboard()
         {
@@ -259,8 +257,8 @@ namespace CSharpProject.Controllers
             if (HttpContext.Session.GetInt32("AdminId") == null)
             {
                 // If not set, redirect to login or another appropriate action
-                _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
-                return RedirectToAction("AdminLogin", "Admin");
+                _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to Admin Login Page.");
+                return RedirectToAction("Admin");
             }
 
             // Continue with the dashboard logic...
@@ -278,7 +276,7 @@ namespace CSharpProject.Controllers
             {
                 // If not set, redirect to login or another appropriate action
                 _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
-                return RedirectToAction("AdminLogin", "Admin");
+                return RedirectToAction("Admin");
             }
 
             ViewBag.OrderInfo = _context.Orders.Include(w => w.Products)
@@ -295,7 +293,7 @@ namespace CSharpProject.Controllers
             {
                 // If not set, redirect to login or another appropriate action
                 _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
-                return RedirectToAction("AdminLogin", "Admin");
+                return RedirectToAction("Admin");
             }
 
             ViewBag.AllProducts = _context.Products.Include(a => a.MediaType).OrderByDescending(w => w.ProductId).ToList();
@@ -310,7 +308,7 @@ namespace CSharpProject.Controllers
             {
                 // If not set, redirect to login or another appropriate action
                 _logger.LogInformation("AdminDashboard accessed without proper session. Redirecting to AdminLogin.");
-                return RedirectToAction("AdminLogin", "Admin");
+                return RedirectToAction("Admin");
             }
             ViewBag.AllCategories = _context.Categories.ToList();
             return View();
